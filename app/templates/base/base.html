@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+{% include 'base/head.html' %}
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+        {% include 'base/top-bar.html' %}
+        
+        {% include 'base/left-side.html' %}
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->                      
+            <div class="content-page">
+			    <div class="content">
+                    <div class="container">
+			{% include 'modals/modals.html' %}
+			{% block content %}
+			{% endblock %}
+                    </div> <!-- container --> 
+                </div> <!-- content -->
+            {% include 'base/footer.html' %}
+
+            </div>
+            
+
+
+        {% include 'base/right-side.html' %}
+
+        </div>
+        <!-- END wrapper -->
+
+
+    
+{% include 'base/scripts.html' %}
+		
+{% block addscripts %}
+{% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,140 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+
+						<!-- Page-Title -->
+						<div class="row">
+							<div class="col-sm-12">
+                                <div class="btn-group pull-right m-t-15">
+                                    <button type="button" class="btn btn-default dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+                                    <ul class="dropdown-menu drop-menu-right" role="menu">
+                                        <li><a href="tables-editable.html#">Action</a></li>
+                                        <li><a href="tables-editable.html#">Another action</a></li>
+                                        <li><a href="tables-editable.html#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="tables-editable.html#">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+								<h4 class="page-title">Editable Tables</h4>
+								<ol class="breadcrumb">
+									<li>
+										<a href="tables-editable.html#">Ubold</a>
+									</li>
+									<li>
+										<a href="tables-editable.html#">Tables</a>
+									</li>
+									<li class="active">
+										Editable tables
+									</li>
+								</ol>
+							</div>
+						</div>
+
+
+                        <div class="row">
+                        	<div class="col-sm-12">
+                        		<div class="card-box">
+                        			<h4 class="m-t-0 header-title"><b>Inline Editor</b></h4>
+                        			<p class="text-muted m-b-30 font-13">
+										just start typing to edit, or move around with arrow keys or mouse clicks!
+									</p>
+
+                        			<div class="table-responsive">
+                        				<table id="mainTable" class="table table-striped m-b-0">
+											<thead>
+												<tr>
+                                                    {% for c in cols %}
+													<th>{{c}}</th>
+													{% endfor %}
+												</tr>
+											</thead>
+											<tbody>
+                                                {% for o in organisations %}
+												<tr>
+													<td>{{o.id}}</td><td>{{o.name}}</td><td>{{o.address}}</td><td>{{o.contacts}}</td><td>{{o.type}}</td><td>{{o.created_by}}</td><td>{{o.activities}}</td>
+												</tr>
+                                                {% endfor %}
+											</tbody>
+											<tfoot>
+												<tr>
+													<th><strong>TOTAL</strong></th><th></th><th></th><th></th>
+												</tr>
+                                            </tfoot>
+										</table>
+                        			</div>
+                        		</div>
+                        	</div>
+                        </div>
+
+<!--Custom Toolbar-->
+						<!--===================================================-->
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="card-box">
+									<h4 class="m-t-0 header-title"><b>Custom Toolbar</b></h4>
+									<p class="text-muted font-13">
+										Example of Custom Toolbar (Your text goes here).
+									</p>
+									
+									<button id="demo-delete-row" class="btn btn-danger" disabled><i class="fa fa-times m-r-5"></i>Delete</button>
+									<table id="demo-custom-toolbar"  data-toggle="table"
+										   data-toolbar="#demo-delete-row"
+										   data-search="true"
+										   data-show-refresh="true"
+										   data-show-toggle="true"
+										   data-show-columns="true"
+										   data-sort-name="id"
+										   data-page-list="[5, 10, 20]"
+										   data-page-size="5"
+										   data-pagination="true" data-show-pagination-switch="true" class="table-bordered ">
+										<thead>
+											<tr>
+												<th data-field="state" aria-controls="datatable-buttons" data-checkbox="true"></th>
+												<th data-field="id" aria-controls="datatable-buttons" data-sortable="true" data-formatter="invoiceFormatter">{{cols[0]}}</th>
+												<th data-field="name" aria-controls="datatable-buttons" data-sortable="true">{{cols[1]}}</th>
+												<th data-field="date" aria-controls="datatable-buttons" data-sortable="true" data-formatter="dateFormatter">{{cols[2]}}</th>
+												<th data-field="amount" aria-controls="datatable-buttons" data-align="center" >{{cols[3]}}</th>
+												<th data-field="status" data-align="center" >{{cols[4]}}</th>
+												<th data-field="status" data-align="center" >{{cols[5]}}</th>
+												<th data-field="status" data-align="center" >{{cols[6]}}</th>
+											</tr>
+										</thead>
+										
+										<tbody>
+											{% for o in organisations %}
+											<tr>
+												
+												<td></td>
+												<td>{{o.id}}</td><td>{{o.name}}</td><td>{{o.address}}</td><td>{{o.contacts}}</td><td>{{o.type}}</td><td>{{o.created_by}}</td><td>{{o.activities}}</td>
+												
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>                
+{% endblock %}
+
+{#% block addscripts %#}
+                	    <!-- Examples -->
+	    <script src="{{ url_for('static', filename='assets/plugins/magnific-popup/js/jquery.magnific-popup.min.js')}}"></script>
+	    <script src="{{ url_for('static', filename='assets/plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
+	    <script src="{{ url_for('static', filename='assets/plugins/datatables/dataTables.bootstrap.js')}}"></script>
+	    <script src="{{ url_for('static', filename='assets/plugins/tiny-editable/mindmup-editabletable.js')}}"></script>
+	    <script src="{{ url_for('static', filename='assets/plugins/tiny-editable/numeric-input-example.js')}}"></script>
+	    
+	    
+	    <script src="{{ url_for('static', filename='assets/pages/datatables.editable.init.js')}}"></script>
+	    
+	    <script>
+			$('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+			
+		</script>
+{#% endblock %#}
+{% block addscripts %}
+        <script src="{{ url_for('static', filename='assets/plugins/bootstrap-table/js/bootstrap-table.min.js')}}"></script>
+
+        <script src="{{ url_for('static', filename='assets/pages/jquery.bs-table.js')}}"></script>
+{% endblock %}

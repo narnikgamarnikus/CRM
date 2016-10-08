@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% from 'macros.html' import render_field %}
+
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="btn-group pull-right m-t-15">
+                                    <button type="button" class="btn btn-default dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">Settings <span class="m-l-5"><i class="fa fa-cog"></i></span></button>
+                                    <ul class="dropdown-menu drop-menu-right" role="menu">
+                                        <li><a href="dashboard_2.html#">Action</a></li>
+                                        <li><a href="dashboard_2.html#">Another action</a></li>
+                                        <li><a href="dashboard_2.html#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="dashboard_2.html#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <h4 class="page-title">Create New Contact</h4>
+                                <p class="text-muted page-title-alt">Welcome to Ubold admin panel !</p>
+                            </div>
+                        </div>
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-lg-offset-3 col-lg-6 col-xs-12">
+          <form action="" method="POST" class="form-horizontal">
+            <dl>
+              {{ render_field(form.first_name, class="form-control") }}
+              {{ render_field(form.last_name, class="form-control") }}
+              {{ render_field(form.email, class="form-control") }}
+              {{ render_field(form.role, class="form-control") }}
+              {{ render_field(form.mobile, class="form-control") }}
+              {{ render_field(form.org_id, class="form-control") }}
+            </dl>
+            <p><button class="btn btn-purple waves-effect waves-light" type=submit>Create</button></p>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
